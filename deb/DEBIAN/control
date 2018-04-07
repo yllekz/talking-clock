@@ -1,5 +1,5 @@
 Package: talking-clock
-Description: Bash script for homan voice time annoucment
-Maintainer: jan <studies.tutor@gmail.com>
-Version: 2.0-2
+Description: Bash script for human voice time announcement
+Maintainer: AbabUmar <AbaUmar@tuta.io>
+Version: 2.1
 Architecture: all

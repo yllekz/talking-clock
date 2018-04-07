@@ -9,10 +9,10 @@ talking-clock:
     stops clock
 ```
 
-**Project website:** 
-[https://talking-clock.com](https://talking-clock.com)
+**Project website:**
+[https://debs.talking-clock.com](https://debs.zetabytesys.com)
 
 TODO:
 - consider replacing *aplay* with *play* from *sox* package for volume control option.
-- fix config file issue 
+- fix config file issue
 - update grep usage with if
