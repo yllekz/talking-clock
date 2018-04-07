@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#Copyright (C) 2018  AbaUmar <AbaUmaren AbaHilalen>
+#Copy[right|lift|left] (C) 2018  AbaUmar <AbaUmaren AbaHilalen>
 #
 #This program is free software; you can redistribute it and/or modify
 #it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ readonly program="talking-clock"
 readonly player="aplay"
 readonly config="$HOME/.config/talking-clock.conf"
 
-freq=0
+freq=15
 main_dir="/usr/share"
 
 print_help()
