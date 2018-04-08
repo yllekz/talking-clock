@@ -10,9 +10,10 @@ talking-clock:
 ```
 
 **Project website:**
-[https://debs.talking-clock.com](https://debs.zetabytesys.com)
+[https://debs.ZetaByteSys.com](https://debs.zetabytesys.com)
 
 TODO:
+
 - consider replacing *aplay* with *play* from *sox* package for volume control option.
 - fix config file issue
 - update grep usage with if
