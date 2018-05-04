@@ -16,6 +16,8 @@
 
 ### 2018-04-08_01-23-39_+0800
 
+### 2018-05-04__15-58-08__+0800
+
 readonly debug=true
 readonly program="talking-clock"
 readonly player="aplay"
@@ -73,23 +75,23 @@ clock()
             $player -q "$main_dir/$program/0.wav"
         elif [[ $minute -eq 10 && $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/10.wav"
         elif [[ $minute -eq 15  && ( $freq -eq 15 || $freq -eq 5 ) ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/quarter.wav"
+            $player -q "$main_dir/$program/bang.wav"
             $player -q "$main_dir/$program/quarter.wav"
             $player -q "$main_dir/$program/past.wav"
             $player -q "$main_dir/$program/$hour.wav"
         elif [[ $minute -eq 20 && $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/20.wav"
         elif [[ $minute -eq 25 && $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/20.wav"
             $player -q "$main_dir/$program/5.wav"
@@ -100,18 +102,19 @@ clock()
             $player -q "$main_dir/$program/30.wav"
         elif [[ $minute -eq 35 && $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/30.wav"
             $player -q "$main_dir/$program/5.wav"
         elif [[ $minute -eq 40 && $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/40.wav"
         elif [[ $minute -eq 45  &&  ( $freq -eq 15  ||  $freq -eq 5 ) ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/quarter.wav"
+            $player -q "$main_dir/$program/bang.wav"
+            # $player -q "$main_dir/$program/quarter.wav"
             $player -q "$main_dir/$program/quarter.wav"
             $player -q "$main_dir/$program/to.wav"
             if [[ $hour -eq 12 ]];then
@@ -121,12 +124,12 @@ clock()
             fi
         elif [[ $minute -eq 50  &&  $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/50.wav"
         elif [[ $minute -eq 55 &&  $freq -eq 5 ]]; then
 #            /usr/bin/paplay "$main_dir/$program/deek.aiff"
-            $player -q "$main_dir/$program/$hour.wav"
+            # $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/$hour.wav"
             $player -q "$main_dir/$program/50.wav"
             $player -q "$main_dir/$program/5.wav"
@@ -179,3 +182,5 @@ stop_clock
 echo "starting $program"
 
 clock &
+
+### sudo cp source/talking-clock /usr/bin/talking-clock

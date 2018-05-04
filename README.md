@@ -1,6 +1,6 @@
 # talking-clock
 
-```
+```bash
 talking-clock:
 -f [n]
     n: 5, 15, 30 ( min frequency )
