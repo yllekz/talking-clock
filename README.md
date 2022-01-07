@@ -27,14 +27,9 @@ cd /usr/share/talking-clock/source && ./talking-clock
 ```
 
 **Notes**
-* By default, the script will run in the background and write the time (every 60 minutes) to console you invoked it on (if you left it open).
-* By default, it looks for wav files in `/usr/share/talking-clock/_.wav`
-    * Example, at 3pm it looks to play:
-        * `/usr/share/talking-clock/bang.wav`
-        * `/usr/share/talking-clock/3.wav`
-        * `/usr/share/talking-clock/0.wav`
-        * `/usr/share/talking-clock/0.wav`
-* wait till the top of the hour to hear the chime
+* By default, the script will run in the background and write the time (every 60 seconds) to console you invoked it on (if you left it open).
+* By default, it looks for wav files in `/usr/share/talking-clock/source/sound/_.wav`
+* At the top of the hour, a full chime will play
 * To see if it's running: `ps | grep talking`
 * to end it: ``killall talking-clock``
 
