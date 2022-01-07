@@ -121,8 +121,10 @@ clock()
             ##$player -q "$main_dir/$program/source/sound/quarter.wav"
             ##$player -q "$main_dir/$program/source/sound/to.wav"
             if [[ $hour -eq 12 ]];then
+                echo "hour is 12"
                 ##$player -q "$main_dir/$program/source/sound/1.wav"
             else
+                echo "hour is not 12"
                 ##$player -q "$main_dir/$program/source/sound/$((hour + 1)).wav"
             fi
         elif [[ $minute -eq 50  &&  $freq -eq 5 ]]; then
