@@ -27,12 +27,18 @@ sudo chmod +x /usr/share/talking-clock/source/talking-clock
 cd /usr/share/talking-clock/source && ./talking-clock
 ```
 
+**Compatibility**
+* Tested and working on Linux Mint Cinnamon 20.2
+* Tested with inconclusive results on Windows 10 via Ubuntu on Windows Subsystem for Linux (need to run this as a prereq: `sudo apt install alsa-utils`)
+    * While the script itself will execute jus fine, I ran into issues with `aplay` not finding the sound card. [This article](https://research.wmz.ninja/articles/2017/11/setting-up-wsl-with-graphics-and-audio.html) might help but I'm not sure yet.
+* Not yet tested on macOS
+
 **Notes**
 * By default, the script will run in the background and write the time (every 60 seconds) to console you invoked it on (if you left it open).
 * By default, it looks for wav files in `/usr/share/talking-clock/source/sound/_.wav`
 * At the top of the hour, a full chime will play
-* To see if it's running: `ps | grep talking`
-* to end it: ``killall talking-clock``
+* To see if it's running: `ps | grep talking` or open `htop` and search for `talking-clock` if `ps` does not show it.
+* To end it: ``killall talking-clock``
 
 **TODO:**
 * [from original repo] consider replacing *aplay* with *play* from *sox* package for volume control option.
