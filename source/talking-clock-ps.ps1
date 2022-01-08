@@ -28,20 +28,20 @@ while($run -eq $true){
         if ( $CurrentHour24H -ge $ChimeStartHour -or $CurrentHour24H -le $ChimeEndHour ){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime"
             (New-Object Media.SoundPlayer "$($psscriptroot)\sound\unhhourly.wav").Play();
-
+            start-sleep 25 #To prevent overlapping over the next wav file
             #play the chime x times based on the hour, shorten all but the last one
             for($c=1; $c -le $CurrentHour24H; $c++){
                 Write-Warning "Bong x$($CurrentHour12H)"
                 if( ($c -ne $CurrentHour12H) ){
-                    #TODO: Find a way to only play this for 3 seconds
                     (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+                    start-sleep 3.5
                 }else{
                     (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
                 }
             }
         }
 
-        start-sleep 60 #To prevent it from going off again in the same minute
+        start-sleep 35 #To prevent it from going off again in the same minute
 
     }elseif( ($CurrentMinute -eq '15') ){
 
