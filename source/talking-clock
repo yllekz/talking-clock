@@ -72,6 +72,17 @@ clock()
         if [[ $minute -eq 0 ]];then
 #            /usr/bin/paplay "$main_dir/$program/source/sound/deek.aiff"
             $player -q "$main_dir/$program/source/sound/unhhourly.wav"
+            #region play the chime x times based on the hour, shorten all but the last one
+            for (( c=1; c<=$hour; c++ ))
+            do  
+                if [ $c -ne $hour ]
+                then
+                    $player -q "$main_dir/$program/source/sound/bang.wav" -d 3
+                else
+                    $player -q "$main_dir/$program/source/sound/bang.wav"
+                fi
+            done
+            #endregion
             ##$player -q "$main_dir/$program/source/sound/bang.wav"
             ##$player -q "$main_dir/$program/source/sound/$hour.wav"
             ##$player -q "$main_dir/$program/source/sound/0.wav"
