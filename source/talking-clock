@@ -71,7 +71,7 @@ clock()
 
         if [[ $minute -eq 0 ]];then
 #            /usr/bin/paplay "$main_dir/$program/source/sound/deek.aiff"
-            $player -q "$main_dir/$program/source/sound/unhhourlychime.wav"
+            $player -q "$main_dir/$program/source/sound/unhhourly.wav"
             ##$player -q "$main_dir/$program/source/sound/bang.wav"
             ##$player -q "$main_dir/$program/source/sound/$hour.wav"
             ##$player -q "$main_dir/$program/source/sound/0.wav"
