@@ -13,12 +13,12 @@ talking-clock:
 * Make the script's default actions nonverbal chimes.
 * Easy-to-read instructions on how to install/use
 * Bugfix: Script didn't correctly point to the wav files
-* Integrate the UNH Clock's Westminster chime to mimick an IRL clock sound
+* Integrate the UNH Clock's Westminster chime to mimic an IRL clock sound
     * bang.wav replaced with UNH's version (original is bang-bak.wav)
 
 **Installation/Use**
 ```
-# Pull down the code to the right spot on your local system:
+# Pull down the code to your local system:
 sudo git clone https://github.com/yllekz/talking-clock /usr/share/talking-clock
 
 # Make script executable + run it:
@@ -34,7 +34,6 @@ cd /usr/share/talking-clock/source && ./talking-clock
 * to end it: ``killall talking-clock``
 
 **TODO:**
-* bang.wav is played for more than just hourly, it's played for quarter past and half past
 * [from original repo] consider replacing *aplay* with *play* from *sox* package for volume control option.
 * [from original repo] fix config file issue
 * [from original repo] update grep usage with if
