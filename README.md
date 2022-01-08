@@ -4,7 +4,7 @@
 talking-clock:
 -f [n]
     n: 5, 15, 30 ( min frequency )
-    by default it announces time once per hour
+    by default it plays chimes on Westminster cadence (short chime on 15/30/45 minutes past the hour) and will play a clock bell striking sound x times based on the hour.
 -s
     stops clock
 ```
@@ -15,6 +15,7 @@ talking-clock:
 * Bugfix: Script didn't correctly point to the wav files
 * Integrate the UNH Clock's Westminster chime to mimic an IRL clock sound
     * bang.wav replaced with UNH's version (original is bang-bak.wav)
+* Plays chimes based on [Westminster Chimes cadence](https://en.wikipedia.org/wiki/Westminster_Quarters)
 
 **Installation/Use**
 ```
