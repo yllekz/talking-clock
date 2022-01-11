@@ -30,7 +30,7 @@ while($run -eq $true){
             (New-Object Media.SoundPlayer "$($psscriptroot)\sound\unhhourly.wav").Play();
             start-sleep 25 #To prevent overlapping over the next wav file
             #play the chime x times based on the hour, shorten all but the last one
-            for($c=1; $c -le $CurrentHour24H; $c++){
+            for($c=1; $c -le $CurrentHour12H; $c++){
                 Write-Warning "Bong x$($CurrentHour12H)"
                 if( ($c -ne $CurrentHour12H) ){
                     (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
