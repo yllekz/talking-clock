@@ -34,7 +34,7 @@ print_help()
 talking-clock:
 -f [n]
     n: 5, 15, 30 ( frequency in minutes )
-    If no flag specified clock will play only at full hour.
+    If no flag specified clock will play every 15 minutes and performa full chime at the full hour.
 -s
     stops clock
 EOF
