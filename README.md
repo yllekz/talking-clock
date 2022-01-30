@@ -42,7 +42,8 @@ cd /usr/share/talking-clock/source && ./talking-clock
 * By default, the Bash script will run in the background and write the time (every 60 seconds) to console you invoked it on (if you left it open).
 * By default, the Bash script looks for wav files in `/usr/share/talking-clock/source/sound/_.wav`
 * At the top of the hour, a full chime will play
-* If using the Bash script, to see if it's running: `ps | grep talking` or open `htop` and search for `talking-clock` if `ps` does not show it.
+* If using the Bash script, to see if it's running: `ps -aux | grep talking`
+    * Or open `htop` and search for `talking-clock` if `ps` does not show it.
 * If using the Bash script, to end it: ``killall talking-clock``
 
 **TODO:**
