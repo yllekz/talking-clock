@@ -27,16 +27,42 @@ while($run -eq $true){
         #Only chime if between certain hours
         if ( $CurrentHour24H -ge $ChimeStartHour -or $CurrentHour24H -le $ChimeEndHour ){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime"
-            (New-Object Media.SoundPlayer "$($psscriptroot)\sound\unhhourly.wav").Play();
-            start-sleep 25 #To prevent overlapping over the next wav file
+            
+            if($IsLinux -eq $true){
+                aplay -q "$psscriptroot/source/sound/unhhourly.wav"
+            }elseif($IsMacOS -eq $true){
+                #TODO: TBD
+            }else{
+                #Windows
+                (New-Object Media.SoundPlayer "$($psscriptroot)\sound\unhhourly.wav").Play();
+                start-sleep 25 #To prevent overlapping over the next wav file
+            }
+
             #play the chime x times based on the hour, shorten all but the last one
             for($c=1; $c -le $CurrentHour12H; $c++){
-                Write-Warning "Bong x$($CurrentHour12H)"
+                Write-Warning "Bong x$($CurrentHour12H)"                
                 if( ($c -ne $CurrentHour12H) ){
-                    (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
-                    start-sleep 3.5
+                    #Play the bang abridged
+                    if($IsLinux -eq $true){
+                        aplay -q "$psscriptroot/source/sound/bang.wav" -d 3
+                    }elseif($IsMacOS -eq $true){
+                        #TODO: TBD
+                    }else{
+                        #Windows
+                        (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+                        start-sleep 3.5
+                    }
+        
                 }else{
-                    (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+                    #Play the bang unabridged
+                    if($IsLinux -eq $true){
+                        aplay -q "$psscriptroot/source/sound/bang.wav"
+                    }elseif($IsMacOS -eq $true){
+                        #TODO: TBD
+                    }else{
+                        #Windows
+                        (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+                    }
                 }
             }
         }
@@ -48,7 +74,15 @@ while($run -eq $true){
         #Only chime if between certain hours
         if ( $CurrentHour24H -ge $ChimeStartHour -or $CurrentHour24H -le $ChimeEndHour ){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 15min"
-            (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+            #Play the bang unabridged
+            if($IsLinux -eq $true){
+                aplay -q "$psscriptroot/source/sound/bang.wav"
+            }elseif($IsMacOS -eq $true){
+                #TODO: TBD
+            }else{
+                #Windows
+                (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+            }
         }
 
         start-sleep 60 #To prevent it from going off again in the same minute
@@ -58,7 +92,15 @@ while($run -eq $true){
         #Only chime if between certain hours
         if ( $CurrentHour24H -ge $ChimeStartHour -or $CurrentHour24H -le $ChimeEndHour ){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 30min"
-            (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+            #Play the bang unabridged
+            if($IsLinux -eq $true){
+                aplay -q "$psscriptroot/source/sound/bang.wav"
+            }elseif($IsMacOS -eq $true){
+                #TODO: TBD
+            }else{
+                #Windows
+                (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+            }
         }
 
         start-sleep 60 #To prevent it from going off again in the same minute
@@ -68,7 +110,15 @@ while($run -eq $true){
         #Only chime if between certain hours
         if ( $CurrentHour24H -ge $ChimeStartHour -or $CurrentHour24H -le $ChimeEndHour ){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 45min"
-            (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+            #Play the bang unabridged
+            if($IsLinux -eq $true){
+                aplay -q "$psscriptroot/source/sound/bang.wav"
+            }elseif($IsMacOS -eq $true){
+                #TODO: TBD
+            }else{
+                #Windows
+                (New-Object Media.SoundPlayer "$($psscriptroot)\sound\bang.wav").Play();
+            }
         }
 
         start-sleep 60 #To prevent it from going off again in the same minute
