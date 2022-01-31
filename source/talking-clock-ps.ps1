@@ -8,9 +8,12 @@ while( (get-date).ToString("ss") -ne '00' ){
 }
 
 $run = $true
+Write-Warning "Script has begun"
 
 $ChimeStartHour = 8
 $ChimeEndHour = 19
+
+write-warning "Chime hours defined as $($ChimeStartHour) to $($ChimeEndHour)"
 
 while($run -eq $true){
 
