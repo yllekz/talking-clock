@@ -29,7 +29,7 @@ while($run -eq $true){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime"
             
             if($IsLinux -eq $true){
-                aplay -q "$psscriptroot/source/sound/unhhourly.wav"
+                aplay -q "$psscriptroot/sound/unhhourly.wav"
             }elseif($IsMacOS -eq $true){
                 #TODO: TBD
             }else{
@@ -44,7 +44,7 @@ while($run -eq $true){
                 if( ($c -ne $CurrentHour12H) ){
                     #Play the bang abridged
                     if($IsLinux -eq $true){
-                        aplay -q "$psscriptroot/source/sound/bang.wav" -d 3
+                        aplay -q "$psscriptroot/sound/bang.wav" -d 3
                     }elseif($IsMacOS -eq $true){
                         #TODO: TBD
                     }else{
@@ -56,7 +56,7 @@ while($run -eq $true){
                 }else{
                     #Play the bang unabridged
                     if($IsLinux -eq $true){
-                        aplay -q "$psscriptroot/source/sound/bang.wav"
+                        aplay -q "$psscriptroot/sound/bang.wav"
                     }elseif($IsMacOS -eq $true){
                         #TODO: TBD
                     }else{
@@ -76,7 +76,7 @@ while($run -eq $true){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 15min"
             #Play the bang unabridged
             if($IsLinux -eq $true){
-                aplay -q "$psscriptroot/source/sound/bang.wav"
+                aplay -q "$psscriptroot/sound/bang.wav"
             }elseif($IsMacOS -eq $true){
                 #TODO: TBD
             }else{
@@ -94,7 +94,7 @@ while($run -eq $true){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 30min"
             #Play the bang unabridged
             if($IsLinux -eq $true){
-                aplay -q "$psscriptroot/source/sound/bang.wav"
+                aplay -q "$psscriptroot/sound/bang.wav"
             }elseif($IsMacOS -eq $true){
                 #TODO: TBD
             }else{
@@ -112,7 +112,7 @@ while($run -eq $true){
             Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 45min"
             #Play the bang unabridged
             if($IsLinux -eq $true){
-                aplay -q "$psscriptroot/source/sound/bang.wav"
+                aplay -q "$psscriptroot/sound/bang.wav"
             }elseif($IsMacOS -eq $true){
                 #TODO: TBD
             }else{
