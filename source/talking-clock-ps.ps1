@@ -121,6 +121,7 @@ while($run -eq $true){
             start-sleep 60 #To prevent it from going off again in the same minute
         }else{
             write-warning "Not playing 15min chime, frequency is set to be $($Frequency)"
+            start-sleep 60 #To prevent it from going off again in the same minute
         }
 
     }elseif( ($CurrentMinute -eq '30') ){
@@ -143,6 +144,7 @@ while($run -eq $true){
             start-sleep 60 #To prevent it from going off again in the same minute
         }else{
             write-warning "Not playing 30min chime, frequency is set to be $($Frequency)"
+            start-sleep 60 #To prevent it from going off again in the same minute
         }
 
     }elseif( ($CurrentMinute -eq '45') ){
@@ -165,6 +167,7 @@ while($run -eq $true){
             start-sleep 60 #To prevent it from going off again in the same minute
         }else{
             write-warning "Not playing 45min chime, frequency is set to be $($Frequency)"
+            start-sleep 60 #To prevent it from going off again in the same minute
         }
 
     }
