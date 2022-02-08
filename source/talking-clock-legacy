@@ -1,0 +1,186 @@
+#!/bin/bash
+#
+# Copy[right|lift|left] (C) 2018  AbaUmar <AbaUmaren AbaHilalen>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+
+### 2018-04-08_01-23-39_+0800
+
+### 2018-05-04__15-58-08__+0800
+
+readonly debug=true
+readonly program="talking-clock"
+readonly player="aplay"
+readonly config="$HOME/.config/talking-clock.conf"
+
+freq=15
+main_dir="/usr/share"
+
+print_help()
+{
+    cat <<-EOF
+talking-clock:
+-f [n]
+    n: 5, 15, 30 ( frequency in minutes )
+    If no flag specified clock will play only at full hour.
+-s
+    stops clock
+EOF
+
+    exit 1
+}
+
+stop_clock()
+{
+    name="${0##*/}"
+    pid=$(pidof -x -o "$$" $name )
+
+    if [ -n "$pid" ]
+    then
+        kill $pid
+        echo "stopping $name"
+    fi
+}
+
+clock()
+{
+    while :
+    do
+        delay=$((60 -  $(date +%s) % 60));
+        sleep $delay
+
+        timestamp=($(date "+%l %M %S"))
+        hour=${timestamp[0]#0}
+        minute=${timestamp[1]#0}
+
+        if [[ $debug == true ]]; then
+            echo "$hour:$minute:${timestamp[2]}" >&2
+        fi
+
+        if [[ $minute -eq 0 ]];then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            $player -q "$main_dir/$program/bang.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/0.wav"
+            $player -q "$main_dir/$program/0.wav"
+        elif [[ $minute -eq 10 && $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/10.wav"
+        elif [[ $minute -eq 15  && ( $freq -eq 15 || $freq -eq 5 ) ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            $player -q "$main_dir/$program/bang.wav"
+            $player -q "$main_dir/$program/quarter.wav"
+            $player -q "$main_dir/$program/past.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+        elif [[ $minute -eq 20 && $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/20.wav"
+        elif [[ $minute -eq 25 && $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/20.wav"
+            $player -q "$main_dir/$program/5.wav"
+        elif [[ $minute -eq 30 && ( $freq -eq 30 || $freq -eq 15 || $freq -eq 5 ) ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            $player -q "$main_dir/$program/bang.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/30.wav"
+        elif [[ $minute -eq 35 && $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/30.wav"
+            $player -q "$main_dir/$program/5.wav"
+        elif [[ $minute -eq 40 && $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/40.wav"
+        elif [[ $minute -eq 45  &&  ( $freq -eq 15  ||  $freq -eq 5 ) ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            $player -q "$main_dir/$program/bang.wav"
+            # $player -q "$main_dir/$program/quarter.wav"
+            $player -q "$main_dir/$program/quarter.wav"
+            $player -q "$main_dir/$program/to.wav"
+            if [[ $hour -eq 12 ]];then
+                $player -q "$main_dir/$program/1.wav"
+            else
+                $player -q "$main_dir/$program/$((hour + 1)).wav"
+            fi
+        elif [[ $minute -eq 50  &&  $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/50.wav"
+        elif [[ $minute -eq 55 &&  $freq -eq 5 ]]; then
+#            /usr/bin/paplay "$main_dir/$program/deek.aiff"
+            # $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/$hour.wav"
+            $player -q "$main_dir/$program/50.wav"
+            $player -q "$main_dir/$program/5.wav"
+        fi
+    done
+}
+
+config()
+{
+    if [[ ! -f $config ]]
+    then
+        read -p "Add talking-clock to .xprofile (y/n)? " answer
+        case ${answer:0:1} in
+        y|Y )
+            echo "/usr/bin/talking-clock" >> "$HOME/.xprofile"
+            echo "xprofile: yes" > $config
+         ;;
+        * )
+            echo "xprofile: no" > $config
+        ;;
+        esac
+    else
+        if [[ $(grep -q 'xprofile: yes' $config) -eq 0 ]]
+        then
+            sed -i "s/\(talking-clock\)/\1 -$freq/" ~/.xprofile
+        fi
+    fi
+}
+
+if [ "$(which $player &> /dev/null)" ];then
+    echo "$player is necessary to play clock sound"
+    exit 1
+fi
+
+[[ "$1" == "-h" ]] && print_help
+
+[[ "$1" == "-s" ]] && stop_clock
+
+if [[ "$1" == "-f" && $# -eq 2 ]];
+then
+    [[ $2 != 0 && $2 != 5 && $2 != 10 && $2 != 15 && $2 != 30 ]] && print_help
+    freq=$2
+else
+    [[ $1 != "" ]] && print_help
+fi
+
+config
+
+stop_clock
+echo "starting $program"
+
+clock &
+
+### sudo cp source/talking-clock /usr/bin/talking-clock

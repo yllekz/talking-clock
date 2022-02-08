@@ -5,11 +5,13 @@
 # Usage:
 # pwsh -file /usr/share/talking-clock/source/talking-clock-ps.ps1
 # pwsh -file /usr/share/talking-clock/source/talking-clock-ps.ps1 -ChimeStartHour 8 -ChimeEndHour 19 -Frequency 60
+# pwsh -file /usr/share/talking-clock/source/talking-clock-ps.ps1 -ChimeStartHour 8 -ChimeEndHour 19 -Frequency 60 -SecondHand
 
 # Parameters:
 # [Optional] Chime Start Hour: What hour (24h) to start chiming. If no flag specified, default is 0800 hours
 # [Optional] Chime End Hour: What hour (24h) to end chiming. If no flag specified, default is 1900 hours
 # [Optional] Frequency: Frequency of chimes (example: 15, 30, 60). If no flag specified clock will play every 15 minutes and performa full chime at the full
+# [Optional] Second Hand: Play audible second hand ticks. Default is false.
 
 Param (
     [Parameter()]
@@ -17,7 +19,9 @@ Param (
     [Parameter()]
     [String]$ChimeEndHour,
     [Parameter()]
-    [Int32]$Frequency
+    [Int32]$Frequency,
+    [Parameter()]
+    [switch]$SecondHand
 )
 
 if(!$ChimeStartHour){
@@ -32,7 +36,11 @@ if(!$Frequency){
     $Frequency = 60
 }
 
-write-warning "Chime hours defined as $($ChimeStartHour) to $($ChimeEndHour), with frequency of $($Frequency). Waiting till the top of the minute to begin."
+if(!$SecondHand){
+    $SecondHand = $false
+}
+
+write-warning "Chime hours defined as $($ChimeStartHour) to $($ChimeEndHour), with frequency of $($Frequency). Play seconds? $($SecondHand). Waiting till the top of the minute to begin."
 
 while( (get-date).ToString("ss") -ne '00' ){
     #write-debug "Waiting until we're at 0 seconds in the minute before we begin"
@@ -51,6 +59,7 @@ while($run -eq $true){
     #$CurrentSecond      = $date.ToString("ss")
     $BigChime           = "unhhourly.wav"
     $SmallChime         = "bang.wav"
+    $SecondHandTick     = "sessionsclocktick.wav"
 
     #Write-Warning "$($currenthour24h):$($currentminute)"
 
@@ -71,8 +80,8 @@ while($run -eq $true){
             }
 
             #play the chime x times based on the hour, shorten all but the last one
+            Write-Warning "Bong x$($CurrentHour12H)"
             for($c=1; $c -le $CurrentHour12H; $c++){
-                Write-Warning "Bong x$($CurrentHour12H)"
                 if( ($c -ne $CurrentHour12H) ){
                     #Play the bang abridged
                     if($IsLinux -eq $true){
@@ -120,8 +129,8 @@ while($run -eq $true){
 
             start-sleep 60 #To prevent it from going off again in the same minute
         }else{
-            write-warning "Not playing 15min chime, frequency is set to be $($Frequency)"
-            start-sleep 60 #To prevent it from going off again in the same minute
+            write-debug "Not playing 15min chime, frequency is set to be $($Frequency)"
+            #start-sleep 60 #To prevent console spam
         }
 
     }elseif( ($CurrentMinute -eq '30') ){
@@ -143,8 +152,8 @@ while($run -eq $true){
 
             start-sleep 60 #To prevent it from going off again in the same minute
         }else{
-            write-warning "Not playing 30min chime, frequency is set to be $($Frequency)"
-            start-sleep 60 #To prevent it from going off again in the same minute
+            Write-Debug "Not playing 30min chime, frequency is set to be $($Frequency)"
+            #start-sleep 60 #To prevent console spam
         }
 
     }elseif( ($CurrentMinute -eq '45') ){
@@ -166,10 +175,22 @@ while($run -eq $true){
 
             start-sleep 60 #To prevent it from going off again in the same minute
         }else{
-            write-warning "Not playing 45min chime, frequency is set to be $($Frequency)"
-            start-sleep 60 #To prevent it from going off again in the same minute
+            Write-Debug "Not playing 45min chime, frequency is set to be $($Frequency)"
+            #start-sleep 60 #To prevent console spam
         }
 
+    }else{
+        #Play second hand ticks (but only if specified)
+        if($SecondHand -eq $true){
+            if($IsLinux -eq $true){
+                aplay -q "$psscriptroot/sound/$($SecondHandTick)"
+            }elseif($IsMacOS -eq $true){
+                #TODO: TBD
+            }else{
+                #Windows
+                (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($SecondHandTick)").Play();
+            }
+        }
     }
 
     start-sleep 1 # To be nice to the CPU
