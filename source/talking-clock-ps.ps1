@@ -107,7 +107,7 @@ while($run -eq $true){
     if($CurrentMinute -eq '00'){
 
         #Only chime if between certain hours
-        if ( ($CurrentHour24H -ge $ChimeStartHour) -and ($CurrentHour24H -le $ChimeEndHour) ){
+        if ( ([Int32]$CurrentHour24H -ge $ChimeStartHour) -and ([Int32]$CurrentHour24H -le $ChimeEndHour) ){
             #region play the big hourly chime
             if($BigChimePlayed -eq $false){
                 Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime"
@@ -161,7 +161,7 @@ while($run -eq $true){
 
         if($Frequency -le 15){
             #region Only small chime if between certain hours
-            if ( ($CurrentHour24H -ge $ChimeStartHour) -and ($CurrentHour24H -le $ChimeEndHour) ){
+            if ( ([Int32]$CurrentHour24H -ge $ChimeStartHour) -and ([Int32]$CurrentHour24H -le $ChimeEndHour) ){
 
                 if($SmallChimePlayed -eq $false){
                     Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 15min"
@@ -188,7 +188,7 @@ while($run -eq $true){
 
         if($Frequency -le 30){
             #region Only small chime if between certain hours
-            if ( ($CurrentHour24H -ge $ChimeStartHour) -and ($CurrentHour24H -le $ChimeEndHour) ){
+            if ( ([Int32]$CurrentHour24H -ge $ChimeStartHour) -and ([Int32]$CurrentHour24H -le $ChimeEndHour) ){
 
                 if($SmallChimePlayed -eq $false){
                     Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 30min"
@@ -215,7 +215,7 @@ while($run -eq $true){
 
         if($Frequency -le 45){
             #region Only chime if between certain hours
-            if ( ($CurrentHour24H -ge $ChimeStartHour) -and ($CurrentHour24H -le $ChimeEndHour) ){
+            if ( ([Int32]$CurrentHour24H -ge $ChimeStartHour) -and ([Int32]$CurrentHour24H -le $ChimeEndHour) ){
 
                 if($SmallChimePlayed -eq $false){
                     Write-Warning "$($CurrentHour24H):$($CurrentMinute) Chime 45min"
