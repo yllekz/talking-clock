@@ -29,14 +29,14 @@ talking-clock:
 # Pull down the code to your local system:
 sudo git clone https://github.com/yllekz/talking-clock /usr/share/talking-clock
 
-# Make script executable + run it:
-
-# Linux - If you like bash:
+# Make script executable:
 sudo chmod +x /usr/share/talking-clock/source/talking-clock
+sudo chmod +x /usr/share/talking-clock/source/talking-clock-ps.ps1
+
+# Linux - If you like bash - run the bash script:
 cd /usr/share/talking-clock/source && ./talking-clock
 
-# Linux - If you like PowerShell:
-sudo chmod +x /usr/share/talking-clock/source/talking-clock-ps.ps1
+# Linux - If you like PowerShell - run the PowerShell script:
 cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1
 
 ######
