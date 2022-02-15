@@ -213,7 +213,7 @@ while($run -eq $true){
 
     }elseif( ($CurrentMinute -eq '45') ){
 
-        if($Frequency -le 45){
+        if($Frequency -ge 45){
             #region Only chime if between certain hours
             if ( ([Int32]$CurrentHour24H -ge $ChimeStartHour) -and ([Int32]$CurrentHour24H -le $ChimeEndHour) ){
 
