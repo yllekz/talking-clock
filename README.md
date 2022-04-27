@@ -39,7 +39,7 @@ cd /usr/share/talking-clock/source && ./talking-clock
 # Linux - If you like PowerShell - run the PowerShell script:
 cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1
 #or:
-cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeStartHour 9 -ChimeEndHour 17 -Frequency 30 -SecondHand 3
+cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeStartHr 9 -ChimeEndHr 17 -Freq 30 -SecondHnd 0 -BgChime 1 -SmlChime 1
 
 ######
 
