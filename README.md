@@ -43,7 +43,7 @@ cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeSt
 
 ######
 
-# macOS - <Coming someday>
+# macOS - Same instructions as Linux!
 
 ######
 

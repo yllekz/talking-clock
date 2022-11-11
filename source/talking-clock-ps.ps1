@@ -92,7 +92,7 @@ if(!$SmlChime){
     3 = Waterbury [TODO: implement this]
     4 = Cuckoo Clock
 .NOTES
-    Version: 1.0.0
+    Version: 1.1.0
 .COMPONENT
     N/A
 .ROLE
@@ -225,7 +225,11 @@ function Invoke-ChimeClock
                         }
                     }|Out-Null
                 }elseif($IsMacOS -eq $true){
-                    #TODO: TBD
+                    Start-Job{
+                        while($using:run -eq $true){
+                            afplay "$using:psscriptroot/sound/$($using:SecondHandTick)"
+                        }
+                    }|Out-Null
                 }else{
                     #Windows
                     start-job{
@@ -257,7 +261,7 @@ function Invoke-ChimeClock
                             if($IsLinux -eq $true){
                                 aplay -q "$psscriptroot/sound/$($BigChime)"
                             }elseif($IsMacOS -eq $true){
-                                #TODO: TBD
+                                afplay "$psscriptroot/sound/$($BigChime)"
                             }else{
                                 #Windows
                                 (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($BigChime)").Play();
@@ -276,7 +280,8 @@ function Invoke-ChimeClock
                                     if($IsLinux -eq $true){
                                         aplay -q "$psscriptroot/sound/$($SmallChime)" -d 3
                                     }elseif($IsMacOS -eq $true){
-                                        #TODO: TBD
+                                        afplay "$psscriptroot/sound/$($SmallChime)"
+                                        start-sleep 3.5
                                     }else{
                                         #Windows
                                         (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($SmallChime)").Play();
@@ -288,7 +293,7 @@ function Invoke-ChimeClock
                                     if($IsLinux -eq $true){
                                         aplay -q "$psscriptroot/sound/$($SmallChime)"
                                     }elseif($IsMacOS -eq $true){
-                                        #TODO: TBD
+                                        afplay "$psscriptroot/sound/$($SmallChime)"
                                     }else{
                                         #Windows
                                         (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($SmallChime)").Play();
@@ -312,7 +317,7 @@ function Invoke-ChimeClock
                                 if($IsLinux -eq $true){
                                     aplay -q "$psscriptroot/sound/$($SmallChime)"
                                 }elseif($IsMacOS -eq $true){
-                                    #TODO: TBD
+                                    afplay "$psscriptroot/sound/$($SmallChime)"
                                 }else{
                                     #Windows
                                     (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($SmallChime)").Play();
@@ -339,7 +344,7 @@ function Invoke-ChimeClock
                                 if($IsLinux -eq $true){
                                     aplay -q "$psscriptroot/sound/$($SmallChime)"
                                 }elseif($IsMacOS -eq $true){
-                                    #TODO: TBD
+                                    afplay "$psscriptroot/sound/$($SmallChime)"
                                 }else{
                                     #Windows
                                     (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($SmallChime)").Play();
@@ -366,7 +371,7 @@ function Invoke-ChimeClock
                                 if($IsLinux -eq $true){
                                     aplay -q "$psscriptroot/sound/$($SmallChime)"
                                 }elseif($IsMacOS -eq $true){
-                                    #TODO: TBD
+                                    afplay "$psscriptroot/sound/$($SmallChime)"
                                 }else{
                                     #Windows
                                     (New-Object Media.SoundPlayer "$($psscriptroot)\sound\$($SmallChime)").Play();
