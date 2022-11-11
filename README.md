@@ -43,12 +43,14 @@ cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeSt
 
 ######
 
-# macOS - Same instructions as Linux!
+# macOS:
+# Same instructions as Linux!
 
 ######
 
 # Windows:
 # simply clone this repo to ANY file location you wish, and run talking-clock-ps.ps1
+# Same file switches/arguments as Linux/macOS apply here.
 ```
 
 **Compatibility**
@@ -58,7 +60,6 @@ cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeSt
 * Bash script tested with inconclusive results on Windows 10 via Ubuntu on Windows Subsystem for Linux (need to run this as a prereq: `sudo apt install alsa-utils`)
     * While the script itself will execute just fine, I ran into issues with `aplay` not finding the sound card. [This article](https://research.wmz.ninja/articles/2017/11/setting-up-wsl-with-graphics-and-audio.html) might help but it's quite a setup that isn't really worth it.
     * As a workaround, I ported of the Bash script to PowerShell, using .NET invocations to play the chimes. Check out the "talking-clock-ps.ps1" file if you want to use this on Windows, as this will work. It's not a one-to-one port, but the fundamentals are there.
-* macOS compatibility will arrive some time in the future.
 
 **Notes**
 * By default, the Bash script will run in the background and write the time (every 60 seconds) to console you invoked it on (if you left it open).
