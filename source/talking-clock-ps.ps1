@@ -92,7 +92,7 @@ if(!$SmlChime){
     3 = Waterbury [TODO: implement this]
     4 = Cuckoo Clock
 .NOTES
-    Version: 1.1.0
+    Version: 1.1.1
 .COMPONENT
     N/A
 .ROLE
@@ -273,10 +273,11 @@ function Invoke-ChimeClock
 
                         #region play the chime x times based on the hour, shorten all but the last one
                         if($HourlyBongsPlayed -eq $false){
-                            Write-Verbose "Bong x$($CurrentHour12H)"
+
                             for($c=1; $c -le $CurrentHour12H; $c++){
                                 if( ($c -ne $CurrentHour12H) ){
                                     #Play the bang abridged
+                                    Write-Verbose "Bong x$($CurrentHour12H)"
                                     if($IsLinux -eq $true){
                                         aplay -q "$psscriptroot/sound/$($SmallChime)" -d 3
                                     }elseif($IsMacOS -eq $true){
@@ -290,6 +291,7 @@ function Invoke-ChimeClock
 
                                 }else{
                                     #Play the final bang unabridged
+                                    Write-Verbose "Bong x$($CurrentHour12H) unabridged"
                                     if($IsLinux -eq $true){
                                         aplay -q "$psscriptroot/sound/$($SmallChime)"
                                     }elseif($IsMacOS -eq $true){
