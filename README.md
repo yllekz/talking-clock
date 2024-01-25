@@ -28,7 +28,8 @@ talking-clock:
 #Linux:
 # Pull down the code to your local system:
 sudo git clone https://github.com/yllekz/talking-clock /usr/share/talking-clock
-# Download + extract the "sound" folder from this 7z archive to /usr/share/talking-clock/source: https://1drv.ms/u/s!Arp9XZavoR5Hh5o6Wv1rqLwOHDWrdQ?e=Cc2bIY
+# Download + extract the "sound" folder from this 7z archive to /usr/share/talking-clock/source:
+# https://1drv.ms/u/s!Arp9XZavoR5Hh5o6Wv1rqLwOHDWrdQ?e=Cc2bIY
 
 # Make script executable:
 sudo chmod +x /usr/share/talking-clock/source/talking-clock
@@ -51,7 +52,8 @@ cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeSt
 
 # Windows:
 # clone this repo to ANY file location you wish
-# Download + extract the "sound" folder from this 7z archive to the cloned repo folder's "source" folder: https://1drv.ms/u/s!Arp9XZavoR5Hh5o6Wv1rqLwOHDWrdQ?e=Cc2bIY
+# Download + extract the "sound" folder from this 7z archive to the cloned repo folder's "source" folder:
+# https://1drv.ms/u/s!Arp9XZavoR5Hh5o6Wv1rqLwOHDWrdQ?e=Cc2bIY
 # run talking-clock-ps.ps1
 # Same file switches/arguments as Linux/macOS apply here.
 ```
@@ -65,6 +67,7 @@ cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeSt
     * As a workaround, I ported of the Bash script to PowerShell, using .NET invocations to play the chimes. Check out the "talking-clock-ps.ps1" file if you want to use this on Windows, as this will work. It's not a one-to-one port, but the fundamentals are there.
 
 **Notes**
+* 2024-01-24: The wav files are no longer included in this repository. See above instructions for downloading.
 * By default, the Bash script will run in the background and write the time (every 60 seconds) to console you invoked it on (if you left it open).
 * By default, the Bash script looks for wav files in `/usr/share/talking-clock/source/sound/_.wav`
 * At the top of the hour, a full chime will play
