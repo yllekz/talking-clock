@@ -28,8 +28,8 @@ talking-clock:
 #Linux:
 # Pull down the code to your local system:
 sudo git clone https://github.com/yllekz/talking-clock /usr/share/talking-clock
-# Download + extract the "sound" folder from this 7z archive to /usr/share/talking-clock/source:
-# https://1drv.ms/u/s!Arp9XZavoR5Hh5o6Wv1rqLwOHDWrdQ?e=Cc2bIY
+# Download + extract the "sound" folder out of the 7z archive in the below link to /usr/share/talking-clock/source:
+# https://1drv.ms/f/s!Arp9XZavoR5Hh5o8uNphnHL-5MIFfg?e=Vqgwtd
 
 # Make script executable:
 sudo chmod +x /usr/share/talking-clock/source/talking-clock
@@ -52,8 +52,8 @@ cd /usr/share/talking-clock/source && pwsh -file ./talking-clock-ps.ps1 -ChimeSt
 
 # Windows:
 # clone this repo to ANY file location you wish
-# Download + extract the "sound" folder from this 7z archive to the cloned repo folder's "source" folder:
-# https://1drv.ms/u/s!Arp9XZavoR5Hh5o6Wv1rqLwOHDWrdQ?e=Cc2bIY
+# Download + extract the "sound" folder out of the 7z archive in the below link to the cloned repo folder's "source" folder:
+# https://1drv.ms/f/s!Arp9XZavoR5Hh5o8uNphnHL-5MIFfg?e=Vqgwtd
 # run talking-clock-ps.ps1
 # Same file switches/arguments as Linux/macOS apply here.
 ```
