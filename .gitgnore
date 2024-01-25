@@ -1,5 +1,5 @@
-# Ignore the sound assets file. See Readme for downloading the wav files:
-/source/sound
+# Ignore the sound assets folder/files. See Readme for downloading the wav files:
+/source/sound/**
 
 # Ignore macOS Garbage
 .DS_Store
