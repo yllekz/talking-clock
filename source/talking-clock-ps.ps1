@@ -191,7 +191,7 @@ function Invoke-ChimeClock
 
             if($BigChimeStyle -eq 0){
                 $BigChime = ''
-            }elseif($BigChimeStyleStyle -eq 1){
+            }elseif($BigChimeStyle -eq 1){
                 $BigChime = 'unhhourly.wav'
             }
 
