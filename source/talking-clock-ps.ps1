@@ -88,8 +88,8 @@ if(!$SmlChime){
     Played at the top of the hour and at 15/30/45 minutes (based on Frequency param)
     0 = None
     1 = UNH Thompson Hall Tower
-    2 = Korea [TODO: implement this]
-    3 = Waterbury [TODO: implement this]
+    2 = Korea
+    3 = Waterbury
     4 = Cuckoo Clock
 .NOTES
     Version: 1.1.1
